@@ -1,3 +1,13 @@
+git init
+git add .
+git commit -m "Primer commit del proyecto"
+git branch -M main
+git remote add origin https://github.com/TU_USUARIO/TU_REPO.git
+git push -u origin main
+
+
+
+
 ###############################################
 # AFE Motivación académica - EAFIT
 # Curso: Análisis de Datos 2
@@ -66,14 +76,10 @@ print(resultado_afe, cutoff = 0.30, sort = TRUE)
 
 ########## 5. PUNTAJES FACTORIALES Y NOMBRADO DE FACTORES ##########
 
-# Extraigo los puntajes factoriales de cada estudiante
 puntajes <- as.data.frame(resultado_afe$scores)
 
-# Renombro los factores según la nueva interpretación teórica
-# MR1 -> Inercia_abandono
-# MR2 -> Motivacion_sostenida
-colnames(puntajes)[1:2] <- c("Inercia_abandono",
-                             "Motivacion_sostenida")
+names(puntajes)[names(puntajes) == "MR1"] <- "Inercia_abandono"
+names(puntajes)[names(puntajes) == "MR2"] <- "Motivacion_sostenida"
 
 # Incorporo el semestre original a la tabla de puntajes
 puntajes$Semestre <- datos$Semestre
@@ -179,4 +185,6 @@ legend("topleft",
        legend = c("Inercia_abandono", "Motivacion_sostenida"),
        fill   = c("#4C72B0", "#DD8452"),
        bty    = "n")
+
+# Prueba de actualización para GitHub
 
